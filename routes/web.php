@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ExampleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,14 @@ use App\Http\Controllers\ExampleController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//user controller
 
 Route::get('/', [UserController::class, "showCorrectHomePage"]);
-
-Route::get('/about', [ExampleController::class, "about"]);
-
 Route::post('/register', [UserController::class, "register"]);
-
 Route::post('/login', [UserController::class, 'login']);
-
 Route::post('/logout', [UserController::class, 'logout']);
+
+// Post controller
+
+Route::get('/create-post', [PostController::class, "showCreateForm"]);
+Route::post('/create-post', [PostController::class, "storeNewPost"]);
